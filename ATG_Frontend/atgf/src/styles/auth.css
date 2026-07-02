@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow: auto;
+  background: #050816;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+.auth-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #050816 0%, #0b1026 50%, #111936 100%);
+}
+
+/* =========================
+   CARD
+========================= */
+.auth-card {
+  width: 100%;
+  max-width: 540px;
+  padding: 50px 45px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.45);
+  color: white;
+  animation: fadeIn 0.5s ease;
+}
+
+/* =========================
+   TITLE
+========================= */
+.auth-card h1 {
+  font-size: 35px;
+  font-weight: 150;
+  text-align: center;
+  line-height: 0.95;
+  margin-bottom: 18px;
+}
+
+.auth-card p {
+  text-align: center;
+  color: #cbd5e1;
+  font-size: 20px;
+  margin-bottom: 35px;
+}
+
+/* =========================
+   FORM
+========================= */
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* =========================
+   INPUTS
+========================= */
+.auth-card input,
+.auth-card select {
+  width: 100%;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.10);
+  color: white;
+  font-size: 18px;
+  padding: 0 22px;
+  transition: 0.3s;
+}
+
+.auth-card input::placeholder {
+  color: #9ca3af;
+}
+
+.auth-card input:focus,
+.auth-card select:focus {
+  border: 1px solid #8b5cf6;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+}
+
+/* =========================
+   PASSWORD
+========================= */
+.password-box {
+  position: relative;
+  width: 100%;
+}
+
+.password-box input {
+  padding-right: 60px;
+}
+
+.password-box span {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #cbd5e1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.auth-card button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
+}
+
+/* =========================
+   FOOTER
+========================= */
+.auth-footer {
+  margin-top: 26px;
+  text-align: center;
+  color: #cbd5e1;
+  font-size: 18px;
+}
+
+.auth-footer a {
+  color: #8b5cf6;
+  text-decoration: none;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+/* =========================
+   SELECT
+========================= */
+.auth-card select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.auth-card select option {
+  background: #111936;
+  color: white;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 600px) {
+  .auth-card {
+    padding: 35px 25px;
+  }
+  .auth-card h1 {
+    font-size: 28px;
+    line-height: 1;
+  }
+  .auth-card input,
+  .auth-card select,
+  .auth-card button {
+    height: 48px;
+    font-size: 16px;
+  }
+}

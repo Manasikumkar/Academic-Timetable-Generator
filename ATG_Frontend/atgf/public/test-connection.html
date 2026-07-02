@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Backend Connection Test</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .success { color: green; }
+        .error { color: red; }
+        button { padding: 10px; margin: 5px; }
+        pre { background: #f4f4f4; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Backend Connection Test</h1>
+    
+    <button onclick="testConnection()">Test Connection</button>
+    <button onclick="testLogin()">Test Login</button>
+    <button onclick="testCors()">Test CORS</button>
+    
+    <h3>Results:</h3>
+    <pre id="result">Click a button to test...</pre>
+
+    <script>
+        const BASE_URL = 'http://localhost:8080/api/v1';
+        
+        async function testConnection() {
+            const result = document.getElementById('result');
+            result.textContent = 'Testing connection...';
+            
+            try {
+                const response = await fetch(`${BASE_URL}/test`);
+                const data = await response.json();
+                result.textContent = '✅ Connection Successful!\n' + JSON.stringify(data, null, 2);
+            } catch (error) {
+                result.textContent = '❌ Connection Failed!\n' + error.message;
+            }
+        }
+        
+        async function testLogin() {
+            const result = document.getElementById('result');
+            result.textContent = 'Testing login...';
+            
+            try {
+                const response = await fetch(`${BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: 'admin@test.com',
+                        password: 'password'
+                    })
+                });
+                const data = await response.json();
+                result.textContent = '✅ Login Test Result:\n' + JSON.stringify(data, null, 2);
+            } catch (error) {
+                result.textContent = '❌ Login Test Failed!\n' + error.message;
+            }
+        }
+        
+        async function testCors() {
+            const result = document.getElementById('result');
+            result.textContent = 'Testing CORS...';
+            
+            try {
+                const response = await fetch(`${BASE_URL}/test/cors`);
+                const data = await response.json();
+                result.textContent = '✅ CORS Test Successful!\n' + JSON.stringify(data, null, 2);
+            } catch (error) {
+                result.textContent = '❌ CORS Test Failed!\n' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
